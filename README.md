@@ -94,6 +94,57 @@ Functional React JavaScript Cheat Sheet
 5. Spread Operator (...)
 
 • Shallow Copying: Creates exact duplicates of data objects and state arrays to respect React's immutability requirements during state updates.
-Would you like to save this markdown summary as a .md cheat sheet file to keep on your computer while you code, or should we look closely at how to apply the Spread Operator in state updates?
+
+Destructuring and .map() working together
+
+import React from "react"
+
+// 1. CONCEPT ONE: DESTRUCTURING
+// Instead of accepting '(props)' and writing 'props.name', 
+// we unpack/destructure 'name', 'price', and 'isAvailable' in the function arguments.
+
+function ProductCard({ name, price, isAvailable }) {
+    return (
+        <div className="product-card">
+            <h3>{name}</h3>
+            <p>Price: ${price}</p>
+            {/* Using the short-circuit && operator from the cheat sheet */}
+            {!isAvailable && <p className="sold-out">Sold Out!</p>}
+        </div>
+    )
+}
+
+export default function ProductList() {
+    // Raw JavaScript array of objects (simulating data from an API)
+    const productsData = [
+        { id: 101, name: "Wireless Mouse", price: 29.99, isAvailable: true },
+        { id: 102, name: "Mechanical Keyboard", price: 89.99, isAvailable: false },
+        { id: 103, name: "4K Monitor", price: 299.99, isAvailable: true }
+    ]
+
+    // 2. CONCEPT TWO: THE .MAP() METHOD
+    // We loop over the raw data array and transform each object into a <ProductCard /> component.
+    const productComponents = productsData.map((product) => {
+        return (
+            <ProductCard 
+                key={product.id} // React needs a unique 'key' for lists
+                name={product.name}
+                price={product.price}
+                isAvailable={product.isAvailable}
+            />
+        )
+    })
+
+    // Finally, we just inject the array of components directly into our JSX layout
+    return (
+        <section className="products-container">
+            <h2>Our Store Products</h2>
+            <div className="products-grid">
+                {productComponents}
+            </div>
+        </section>
+    )
+}
+
 
 
