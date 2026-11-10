@@ -9,6 +9,7 @@ Data Driven Pages
 3. Component reuseability
 4. Props help create reuseability
 5. Creating components from an array of Data using array methods
+
 Interactive Pages
 6. Event listeners to interact in React and update app or API's
 7. State in React to maintain data between re-renders
@@ -16,6 +17,7 @@ Interactive Pages
 9. Conditional Rendering using state
 10. React Forms to take data from UI and use it
 11. State management and where it is held
+
 Side Effects
 12. Controlled components
 13. React Functional programming and side effects
