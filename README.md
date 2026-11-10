@@ -31,7 +31,8 @@
 
 
 ## Functional React JavaScript. 
-## Features that Functional React relies on.
+
+#### Features that Functional React relies on.
 
 ### 1. Array Methods (The Rendering Engines)
 
