@@ -45,7 +45,7 @@ const listItems = users.map(user => `<li>${user}</li>`);
 • .filter() – Removes items from lists (like deleting a todo item).
 JS
 const todos = [{id: 1, text: "Clean"}, {id: 2, text: "Cook"}];
-const remaining = todos.filter(todo => todo.id !== 1); // Removes item 1
+const remaining = todos.filter(todo => todo.id !== 1);    // Removes item 1
 
 ### 2. Destructuring (The Component Pipeline)
 
