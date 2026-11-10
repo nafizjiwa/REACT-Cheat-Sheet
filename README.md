@@ -1,16 +1,17 @@
 # REACT-Cheat-Sheet
 
 #### Things to Review:
-Static Pages
+
+###### Static Pages
 1. JSX
 2. Custom components
 
-Data Driven Pages
+###### Data Driven Pages
 3. Component reuseability
 4. Props help create reuseability
 5. Creating components from an array of Data using array methods
 
-Interactive Pages
+###### Interactive Pages
 6. Event listeners to interact in React and update app or API's
 7. State in React to maintain data between re-renders
 8. Declarative React API to only change Data that changed
@@ -18,12 +19,13 @@ Interactive Pages
 10. React Forms to take data from UI and use it
 11. State management and where it is held
 
-Side Effects
+###### Side Effects
 12. Controlled components
 13. React Functional programming and side effects
 14. Fetching Data with React when API loads
 15. Side Effects and applying them in REACT
-React Router
+
+###### React Router
 16. Next.js for front end or back end
 17. Node.js in back end for REST API's 
 
