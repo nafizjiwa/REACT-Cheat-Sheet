@@ -7,8 +7,8 @@
 2. Custom components
 
 ###### Data Driven Pages
-3. Component reuseability
-4. Props help create reuseability
+3. Dynamic web apps change with UI data 
+4. Component reuseability and how Props help create reuseability
 5. Creating components from an array of Data using array methods
 6. Import static assets
 
