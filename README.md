@@ -10,24 +10,25 @@
 3. Component reuseability
 4. Props help create reuseability
 5. Creating components from an array of Data using array methods
+6. Import static assets
 
 ###### Interactive Pages
-6. Event listeners to interact in React and update app or API's
-7. State in React to maintain data between re-renders
-8. Declarative React API to only change Data that changed
-9. Conditional Rendering using state
-10. React Forms to take data from UI and use it
-11. State management and where it is held
+7. Event listeners to interact in React and update app or API's
+8. State in React to maintain data between re-renders
+9. Declarative React API to only change Data that changed
+10. Conditional Rendering using state
+11. React Forms to take data from UI and use it
+12. State management and where it is held
 
 ###### Side Effects
-12. Controlled components
-13. React Functional programming and side effects
-14. Fetching Data with React when API loads
-15. Side Effects and applying them in REACT
+13. Controlled components
+14. React Functional programming and side effects
+15. Fetching Data with React when API loads
+16. Side Effects and applying them in REACT
 
 ###### React Router
-16. Next.js for front end or back end
-17. Node.js in back end for REST API's 
+17. Next.js for front end or back end
+18. Node.js in back end for REST API's 
 
 
 ## Functional React JavaScript. 
