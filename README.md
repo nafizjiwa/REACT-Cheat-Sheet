@@ -4,6 +4,7 @@
 Static Pages
 1. JSX
 2. Custom components
+
 Data Driven Pages
 3. Component reuseability
 4. Props help create reuseability
