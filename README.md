@@ -39,8 +39,10 @@ Building non-interactive UIs by breaking pages into reusable pieces.
 
 Core Concepts
 
-• JSX Rules: Use className instead of class, camelCase HTML attributes (onClick, tabIndex), and wrap adjacent elements in a single parent tag or Fragment (<>...</>).
-• Custom Components: Write JavaScript functions starting with a capital letter (Header) that return JSX, then render them as <Header /> or <Header>...</Header> (using props.children).
+• JSX Rules: 
+Use className instead of class, camelCase HTML attributes (onClick, tabIndex), and wrap adjacent elements in a single parent tag or Fragment (<>...</>).
+• Custom Components: 
+Write JavaScript functions starting with a capital letter (Header) that return JSX, then render them as `<Header />` or `<Header>...</Header>` (using props.children).
 • Modules: Split components into separate files using export default and import to keep projects organized.
 
 Reference Pattern
@@ -49,8 +51,8 @@ jsx
 export default function Header() {
     return (
         <header className="site-header">
-            <img src="/logo.png" alt="Chef Claude logo" />
-            <h1>Chef Claude</h1>
+            <img src="/logo.png" alt="A LOGO" />
+            <h1>TITLE</h1>
         </header>
     )
 }
