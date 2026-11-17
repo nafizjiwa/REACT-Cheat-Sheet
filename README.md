@@ -65,6 +65,7 @@ const [lat, lng] = coordinates;
 
 Functional components are functions.
 • Explicit vs. Implicit – Single line arrow functions omit {} and return.
+
 JS
 // Explicit (Requires 'return' keyword)
 `const MyComponent = () => {
