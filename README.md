@@ -47,16 +47,15 @@ Write JavaScript functions starting with a capital letter (Header) that return J
 
 Reference Pattern
 
-jsx
-export default function Header() {
-    return (
-        <header className="site-header">
-            <img src="/logo.png" alt="A LOGO" />
-            <h1>TITLE</h1>
-        </header>
-    )
-}
-Use code with caution.
+		jsx
+		export default function Header() {
+		    return (
+		        <header className="site-header">
+		            <img src="/logo.png" alt="A LOGO" />
+		            <h1>TITLE</h1>
+		        </header>
+		    )
+		}
 
 Code Review Checklist
 
