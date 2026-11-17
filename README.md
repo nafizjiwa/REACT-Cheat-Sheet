@@ -31,9 +31,9 @@
 18. Node.js in back end for REST API's
 
 
-### Expanded reference sheet for above sections
+## Expanded reference sheet for above sections
 
-1. Static Pages
+### 1. Static Pages
 
 Building non-interactive UIs by breaking pages into reusable pieces.
 
@@ -63,7 +63,7 @@ Code Review Checklist
 • Single root element: Does every component return one top-level parent tag or Fragment?
 • Semantic HTML: Are you using proper tags (<header>, <main>, <section>, <nav>) instead of nesting <div> tags everywhere?
 
-2. Data-Driven React
+### 2. Data-Driven React
 
 This section replaces hardcoded markup with reusable components powered by props and arrays.
 
@@ -75,24 +75,23 @@ Core Concepts
 
 Reference Pattern
 
-jsx
-function Entry({ item }) {
-    return (
-        <article className="entry">
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-        </article>
-    )
-}
+		jsx
+		function Entry({ item }) {
+		    return (
+		        <article className="entry">
+		            <h2>{item.title}</h2>
+		            <p>{item.description}</p>
+		        </article>
+		    )
+		}
 
-export default function EntryList({ entries }) {
-    const entryElements = entries.map(entry => (
-        <Entry key={entry.id} item={entry} />
-    ))
-
-    return <section>{entryElements}</section>
-}
-Use code with caution.
+		export default function EntryList({ entries }) {
+		    const entryElements = entries.map(entry => (
+		        <Entry key={entry.id} item={entry} />
+		    ))
+		
+		    return <section>{entryElements}</section>
+		}
 
 Code Review Checklist
 
@@ -100,9 +99,9 @@ Code Review Checklist
 • Prop readability: If you are passing 4 or more props from a single object, are you passing the object cleanly (item={entry}) or spreading ({...entry}) intentionally?
 • Pure rendering: Does your component simply display the props it receives without trying to modify them?
 
-3. React State (Chef Claude)
+### 3. React State
 
-This section makes apps interactive by storing dynamic data and updating the UI automatically when state changes.
+Make apps interactive by storing dynamic data and updating the UI automatically when state changes.
 
 Core Concepts
 
@@ -114,34 +113,33 @@ Core Concepts
 
 Reference Pattern
 
-jsx
-import { useState } from "react"
-
-export default function IngredientManager() {
-    const [ingredients, setIngredients] = useState([])
-
-    function addIngredient(formData) {
-        const newIngredient = formData.get("ingredient")
-        if (!newIngredient) return
-        setIngredients(prev => [...prev, newIngredient])
-    }
-
-    return (
-        <main>
-            <form action={addIngredient}>
-                <input name="ingredient" type="text" placeholder="e.g. oregano" />
-                <button>Add ingredient</button>
-            </form>
-
-            {ingredients.length > 0 && (
-                <ul>
-                    {ingredients.map(item => <li key={item}>{item}</li>)}
-                </ul>
-            )}
-        </main>
-    )
-}
-Use code with caution.
+		jsx
+		import { useState } from "react"
+		
+		export default function IngredientManager() {
+		    const [ingredients, setIngredients] = useState([])
+		
+		    function addIngredient(formData) {
+		        const newIngredient = formData.get("ingredient")
+		        if (!newIngredient) return
+		        setIngredients(prev => [...prev, newIngredient])
+		    }
+		
+		    return (
+		        <main>
+		            <form action={addIngredient}>
+		                <input name="ingredient" type="text" placeholder="e.g. oregano" />
+		                <button>Add ingredient</button>
+		            </form>
+		
+		            {ingredients.length > 0 && (
+		                <ul>
+		                    {ingredients.map(item => <li key={item}>{item}</li>)}
+		                </ul>
+		            )}
+		        </main>
+		    )
+		}
 
 Code Review Checklist
 
@@ -149,7 +147,7 @@ Code Review Checklist
 • Derived values vs. extra state: Did you calculate values directly during render (like const hasIngredients = ingredients.length > 0) instead of storing redundant useState variables?
 • Controlled vs. FormData inputs: Are form inputs properly cleared or synced after submission?
 
-4. Side Effects
+### 4. Side Effects
 
 This section connects React components to external systems like APIs, browser storage, timers, and DOM refs.
 
@@ -165,32 +163,31 @@ Core Concepts
 
 Reference Pattern
 
-jsx
-import { useState, useEffect, useRef } from "react"
-
-export default function MemeViewer({ memeId }) {
-    const [memeData, setMemeData] = useState(null)
-    const sectionRef = useRef(null)
-
-    useEffect(() => {
-        let isMounted = true
-
-        async function fetchMeme() {
-            const res = await fetch(`https://example.com{memeId}`)
-            const data = await res.json()
-            if (isMounted) setMemeData(data)
-        }
-
-        fetchMeme()
-
-        return () => {
-            isMounted = false
-        }
-    }, [memeId])
-
-    return <section ref={sectionRef}>{memeData?.title}</section>
-}
-Use code with caution.
+		jsx
+		import { useState, useEffect, useRef } from "react"
+		
+		export default function MemeViewer({ memeId }) {
+		    const [memeData, setMemeData] = useState(null)
+		    const sectionRef = useRef(null)
+		
+		    useEffect(() => {
+		        let isMounted = true
+		
+		        async function fetchMeme() {
+		            const res = await fetch(`https://example.com{memeId}`)
+		            const data = await res.json()
+		            if (isMounted) setMemeData(data)
+		        }
+		
+		        fetchMeme()
+		
+		        return () => {
+		            isMounted = false
+		        }
+		    }, [memeId])
+		
+		    return <section ref={sectionRef}>{memeData?.title}</section>
+		}
 
 Code Review Checklist
 
