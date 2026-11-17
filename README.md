@@ -31,7 +31,7 @@
 18. Node.js in back end for REST API's 
 
 
-## Functional React JavaScript. 
+# Functional React JavaScript. 
 
 #### Features that Functional React relies on.
 
@@ -67,12 +67,12 @@ Functional components are functions.
 • Explicit vs. Implicit – Single line arrow functions omit {} and return.
 JS
 // Explicit (Requires 'return' keyword)
-const MyComponent = () => {
+`const MyComponent = () => {
     return <h1>Hello</h1>;
-};
+};`
 
 // Implicit (Automatic return - simple JSX)
-const MyComponentShort = () => <h1>Hello</h1>;
+`const MyComponentShort = () => <h1>Hello</h1>;`
 
 ### 4. Template Literals & Logical Operators
 
