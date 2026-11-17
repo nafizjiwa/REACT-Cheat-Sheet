@@ -28,7 +28,176 @@
 
 ###### React Router
 17. Next.js for front end or back end
-18. Node.js in back end for REST API's 
+18. Node.js in back end for REST API's
+
+
+### Expanded reference sheet for above sections
+
+1. Static Pages
+
+Building non-interactive UIs by breaking pages into reusable pieces.
+
+Core Concepts
+
+• JSX Rules: Use className instead of class, camelCase HTML attributes (onClick, tabIndex), and wrap adjacent elements in a single parent tag or Fragment (<>...</>).
+• Custom Components: Write JavaScript functions starting with a capital letter (Header) that return JSX, then render them as <Header /> or <Header>...</Header> (using props.children).
+• Modules: Split components into separate files using export default and import to keep projects organized.
+
+Reference Pattern
+
+jsx
+export default function Header() {
+    return (
+        <header className="site-header">
+            <img src="/logo.png" alt="Chef Claude logo" />
+            <h1>Chef Claude</h1>
+        </header>
+    )
+}
+Use code with caution.
+
+Code Review Checklist
+
+• Capitalized component names: Do all custom component functions start with an uppercase letter?
+• Single root element: Does every component return one top-level parent tag or Fragment?
+• Semantic HTML: Are you using proper tags (<header>, <main>, <section>, <nav>) instead of nesting <div> tags everywhere?
+
+2. Data-Driven React
+
+This section replaces hardcoded markup with reusable components powered by props and arrays.
+
+Core Concepts
+
+• Props & Destructuring: Pass data into components like HTML attributes and unpack them cleanly in the function parameters (function Card({ title, img })).
+• Transforming Arrays with .map(): Convert an array of data objects into an array of JSX elements.
+• The key Prop: Provide a stable, unique identifier (key={item.id}) on the outermost element returned inside .map() so React tracks list updates accurately.
+
+Reference Pattern
+
+jsx
+function Entry({ item }) {
+    return (
+        <article className="entry">
+            <h2>{item.title}</h2>
+            <p>{item.description}</p>
+        </article>
+    )
+}
+
+export default function EntryList({ entries }) {
+    const entryElements = entries.map(entry => (
+        <Entry key={entry.id} item={entry} />
+    ))
+
+    return <section>{entryElements}</section>
+}
+Use code with caution.
+
+Code Review Checklist
+
+• Unique keys: Are you using a real unique ID for key rather than the array index (especially when items can be added, deleted, or reordered)?
+• Prop readability: If you are passing 4 or more props from a single object, are you passing the object cleanly (item={entry}) or spreading ({...entry}) intentionally?
+• Pure rendering: Does your component simply display the props it receives without trying to modify them?
+
+3. React State (Chef Claude)
+
+This section makes apps interactive by storing dynamic data and updating the UI automatically when state changes.
+
+Core Concepts
+
+• useState Hook: Declare state with const [value, setValue] = useState(initialValue) and never mutate value directly.
+• Functional State Updates: When the new state depends on the previous state, pass a callback (setCount(prevCount => prevCount + 1)).
+• Immutable Arrays & Objects: Always create a new copy using .map(), .filter(), or the spread operator ([...prevItems, newItem]).
+• Conditional Rendering: Show or hide UI based on state using {isReady && <Recipe />} or {isLoading ? <Spinner /> : <Content />}.
+• Lifting & Passing State: Keep shared state in the closest common parent component, passing state values down as props and updater functions down as event callbacks.
+
+Reference Pattern
+
+jsx
+import { useState } from "react"
+
+export default function IngredientManager() {
+    const [ingredients, setIngredients] = useState([])
+
+    function addIngredient(formData) {
+        const newIngredient = formData.get("ingredient")
+        if (!newIngredient) return
+        setIngredients(prev => [...prev, newIngredient])
+    }
+
+    return (
+        <main>
+            <form action={addIngredient}>
+                <input name="ingredient" type="text" placeholder="e.g. oregano" />
+                <button>Add ingredient</button>
+            </form>
+
+            {ingredients.length > 0 && (
+                <ul>
+                    {ingredients.map(item => <li key={item}>{item}</li>)}
+                </ul>
+            )}
+        </main>
+    )
+}
+Use code with caution.
+
+Code Review Checklist
+
+• No direct mutation: Did you avoid .push(), .pop(), or state.prop = value directly on state variables?
+• Derived values vs. extra state: Did you calculate values directly during render (like const hasIngredients = ingredients.length > 0) instead of storing redundant useState variables?
+• Controlled vs. FormData inputs: Are form inputs properly cleared or synced after submission?
+
+4. Side Effects
+
+This section connects React components to external systems like APIs, browser storage, timers, and DOM refs.
+
+Core Concepts
+
+• useEffect Hook: Run side-effect code after React updates the DOM so rendering stays pure and predictable.
+• Dependency Array:
+	• Omit array: Runs after every single render (rarely needed).
+	• Empty array []: Runs once when the component first mounts.
+	• Populated array [id, query]: Runs on mount and whenever any listed value changes.
+• Cleanup Functions: Return a function from useEffect (return () => clearInterval(id)) to prevent memory leaks when a component unmounts.
+• Refs (useRef): Store mutable values that persist across renders without triggering re-renders, or grab direct access to a DOM node (such as smooth-scrolling to a newly generated recipe).
+
+Reference Pattern
+
+jsx
+import { useState, useEffect, useRef } from "react"
+
+export default function MemeViewer({ memeId }) {
+    const [memeData, setMemeData] = useState(null)
+    const sectionRef = useRef(null)
+
+    useEffect(() => {
+        let isMounted = true
+
+        async function fetchMeme() {
+            const res = await fetch(`https://example.com{memeId}`)
+            const data = await res.json()
+            if (isMounted) setMemeData(data)
+        }
+
+        fetchMeme()
+
+        return () => {
+            isMounted = false
+        }
+    }, [memeId])
+
+    return <section ref={sectionRef}>{memeData?.title}</section>
+}
+Use code with caution.
+
+Code Review Checklist
+
+• Complete dependency array: Is every state variable or prop used inside useEffect listed in its dependency array?
+• No unnecessary effects: Are you only using useEffect to sync with external systems (APIs, localStorage, event listeners, DOM scrolling), rather than handling user button clicks (which belong in event handlers)?
+• Cleanup included: Do event listeners (window.addEventListener) and timers (setInterval) have a matching cleanup return function?
+Would you like to paste one of your finished project files (such as MainSection.jsx or App.jsx) for a personalized code review, or are you planning a new React project to build next?
+
 
 
 # Functional React JavaScript. 
